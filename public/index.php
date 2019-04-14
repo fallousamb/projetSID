@@ -2,11 +2,7 @@
 define('ROOT', dirname(__DIR__));
 require ROOT . '/app/App.php';
 App::load();
-//$app = App::getInstance();
-//$posts = $app->getTable('Article');
-//$cat1 = ($posts->getLast()->titre);
-//var_dump($cat1);
-//die();
+
 
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
@@ -17,6 +13,12 @@ if (isset($_GET['p'])) {
 ob_start();
 if($p === 'home') {
     require ROOT . '/pages/hotels/home.php';
+}elseif ($p === 'internet') {
+    require ROOT . '/pages/hotels/hotelsWithInternet.php';
+}elseif ($p === 'clim') {
+    require ROOT . '/pages/hotels/hotelsWithClim.php';
+}elseif ($p === 'piscine') {
+    require ROOT . '/pages/hotels/hotelsWithPiscine.php';
 }
 $content = ob_get_clean();
 require ROOT . '/pages/templates/default.php';

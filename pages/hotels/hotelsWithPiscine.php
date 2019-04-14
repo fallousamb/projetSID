@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-md-8">
-        <h3 style="padding-bottom: 30px;">Liste des hôtels offrant un service</h3>
+        <h3 style="padding-bottom: 30px;">Liste des hôtels avec piscine</h3>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <td>Nom de l'hotel</td>
-                    <td>Note</td>
-                </tr>
+            <tr>
+                <td>Nom de l'hotel</td>
+                <td>Note</td>
+            </tr>
             </thead>
             <tbody>
-            <?php foreach(App::getInstance()->getTable('Hotel')->getNameHotels() as $hotels): ?>
+            <?php foreach(App::getInstance()->getTable('Hotel')->getHotelsWithPiscine() as $hotels): ?>
                 <tr>
                     <td><?= $hotels->nom_hotel; ?></td>
                     <td><?= $hotels->moyenne; ?></td>
