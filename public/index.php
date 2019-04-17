@@ -14,11 +14,11 @@ ob_start();
 if($p === 'home') {
     require ROOT . '/pages/hotels/home.php';
 }elseif ($p === 'internet') {
-    require ROOT . '/pages/hotels/hotelsWithInternet.php';
+    require ROOT . '/pages/hotels/internet.php';
 }elseif ($p === 'clim') {
-    require ROOT . '/pages/hotels/hotelsWithClim.php';
-}elseif ($p === 'piscine') {
-    require ROOT . '/pages/hotels/hotelsWithPiscine.php';
+    require ROOT . '/pages/hotels/clim.php';
+}elseif ($p === 'internet_clim') {
+    require ROOT . '/pages/hotels/internet_clim.php';
 }
 $content = ob_get_clean();
 require ROOT . '/pages/templates/default.php';

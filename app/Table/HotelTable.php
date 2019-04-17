@@ -11,36 +11,67 @@ class HotelTable extends TableFactory{
 
     public function getNameHotels() {
         return $this->query("
-            SELECT  H.num_hotel, H.nom as nom_hotel, fact.note as moyenne
+            SELECT   H.climatisation, AVG (fact.note) as moyenne
             FROM dim_hotels H, fact
-            where H.id_hotel=fact.id_hotel         
+            where H.id_hotel=fact.id_hotel AND H.internet = 1 
+            GROUP BY H.internet 
+           
         ");
     }
 
     public function getHotelsWithInternet() {
         return $this->query("
-            SELECT  H.num_hotel, H.nom as nom_hotel, fact.note as moyenne
+            SELECT  H.internet, AVG (fact.note) as moyenne
             FROM dim_hotels H, fact
-            where H.id_hotel=fact.id_hotel AND H.internet = 1      
+            where H.id_hotel=fact.id_hotel AND H.internet = 1 
+            GROUP BY H.internet
+    
+        ");
+    }
+    public function getHotelsWithoutInternet() {
+        return $this->query("
+            SELECT  H.internet, AVG (fact.note) as moyenne
+            FROM dim_hotels H, fact
+            where H.id_hotel=fact.id_hotel AND H.internet = 0
+            GROUP BY H.internet    
         ");
     }
 
     public function getHotelsWithClim() {
         return $this->query("
-            SELECT  H.num_hotel, H.nom as nom_hotel, fact.note as moyenne
+             SELECT  H.climatisation, AVG (fact.note) as moyenne
             FROM dim_hotels H, fact
-            where H.id_hotel=fact.id_hotel AND H.climatisation = 1      
+            where H.id_hotel=fact.id_hotel AND H.climatisation = 1
+            GROUP BY H.climatisation   
+            
         ");
     }
 
-    public function getHotelsWithPiscine() {
+   public function getHotelsWithoutClim() {
         return $this->query("
-            SELECT  H.num_hotel, H.nom as nom_hotel, fact.note as moyenne
+            SELECT  H.climatisation, AVG (fact.note) as moyenne
             FROM dim_hotels H, fact
-            where H.id_hotel=fact.id_hotel AND H.piscine = 1      
+            where H.id_hotel=fact.id_hotel AND H.climatisation = 0
+            GROUP BY H.climatisation   
+        ");
+   }
+
+   public function getWithInternet_clim() {
+       return $this->query("
+            SELECT H.internet,  H.climatisation, AVG (fact.note) as moyenne
+            FROM dim_hotels H, fact
+            where H.id_hotel=fact.id_hotel AND H.internet = 1 AND H.climatisation = 1
+            GROUP BY H.internet, H.climatisation   
+        ");
+   }
+    public function getWithoutInternet_clim() {
+        return $this->query("
+            SELECT H.internet,  H.climatisation, AVG (fact.note) as moyenne
+            FROM dim_hotels H, fact
+            where H.id_hotel=fact.id_hotel AND H.internet = 0 AND H.climatisation = 0
+            GROUP BY H.internet, H.climatisation   
         ");
     }
-
 
 
 }

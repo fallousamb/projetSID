@@ -1,31 +1,7 @@
-<div class="row">
-    <div class="col-md-8">
-        <h3 style="padding-bottom: 30px;">Liste des hôtels offrant un service</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <td>Nom de l'hotel</td>
-                    <td>Note</td>
-                </tr>
-            </thead>
-            <tbody>
-            <?php foreach(App::getInstance()->getTable('Hotel')->getNameHotels() as $hotels): ?>
-                <tr>
-                    <td><?= $hotels->nom_hotel; ?></td>
-                    <td><?= $hotels->moyenne; ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
-
-    </div>
-
-    <div class="col-md-4" style="padding-top: 10%; padding-left: 5%;">
-        <h2>Les services</h2>
-        <ul>
-            <li><a href="?p=internet">Internet</a></li>
-            <li><a href="?p=clim">Climatisation</li>
-            <li><a href="?p=piscine">Piscine</li>
-        </ul>
-    </div>
+<div class="jumbotron">
+    <h1 class="display-4">Fairguest</h1>
+    <p class="lead">Fairguest est un projet de recherche avec la société Raccourci de La Rochelle.<br/>C’est un outil de gestion de l’e-réputation permettant de collecter des avis publiés sur les sites d’avis pour un établissement, de visualiser et d’analyser des avis collectés, de collecter en direct et modérer des avis consommateurs et de diffuser des avis.
+    </p>
+    <hr class="my-4">
+    <p>Le projet à pour objectif de créer un outil de business intelligence autour d’objets touristiqueser.</p>
 </div>

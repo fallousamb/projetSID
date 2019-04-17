@@ -5,7 +5,7 @@ class App {
 
 
     private static $database;
-    private static $title = 'Mon super site';
+    private static $title = 'Fairguest';
     private  static $_instance;
     private $db_instance;
 
